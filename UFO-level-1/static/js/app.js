@@ -22,14 +22,20 @@ Object.entries(ufoData).forEach(function([key, value]) {
 });
 
 var button = d3.select("#filter-btn#");
-button.on("click", function() {
+button.on("click", filterTable);
+
+function filterTable() {
+
+    d3.event.preventDeault();
     
-    var inputField = d3.select("#datetime");
-    var inputValue = inputField.property('value');
+    var inputElment = d3.select("#datetime");
+
+    var inputValue = inputElement.property("value");
+   
     console.log(inputValue);
 
-    var filter = tableData.filter(ufoData => ufoData.datetime === inputValue);
-    console.log(filter);
+    var filteredData = tableData.filter(ufo => ufo.datetime === inputValue);
+    console.log(filteredData);
 
     filter.forEach(function(input){
     console.log(input);
@@ -43,4 +49,4 @@ button.on("click", function() {
 
 });
 
-});
+};
